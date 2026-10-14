@@ -1,0 +1,88 @@
+.newsletter {
+  display: flex;
+  min-height: 138px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28px max(48px, calc((100% - var(--content-width)) / 2));
+  color: #fff;
+  background: #29204c;
+
+  h2 { margin: 0 0 8px; font-size: 25px; }
+  p { margin: 0; color: #eee; font-size: 13px; line-height: 1.3; }
+  form > div { display: flex; gap: 6px; }
+  input:not([type="checkbox"]) {
+    width: 198px;
+    height: 36px;
+    padding: 0 18px;
+    border: 0;
+    border-radius: 6px;
+  }
+  .yellow-button { min-width: 132px; height: 36px; }
+  label { display: block; margin-top: 7px; font-size: 12px; }
+  label input { margin: 0 3px 0 0; accent-color: var(--color-highlight); }
+}
+
+.footer-main { display: flex; gap: 74px; padding-block: 35px; }
+
+.footer-brand {
+  width: 375px;
+  border-right: 1px solid #ddd;
+  p { color: #777; font-size: 13px; line-height: 1.35; }
+  div { display: flex; gap: 25px; margin-top: 24px; color: #666; }
+  svg { width: 18px; }
+}
+
+.footer-links {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  div { display: flex; flex-direction: column; gap: 13px; color: #777; font-size: 12px; }
+  b { color: #555; font-size: 14px; }
+}
+
+.copyright {
+  padding: 14px;
+  border-top: 1px solid #eee;
+  color: #888;
+  font-size: 11px;
+  text-align: center;
+}
+
+@media (max-width: 1100px) and (min-width: 801px) {
+  .newsletter {
+    gap: 30px;
+    padding-inline: 30px;
+    form > div { display: grid; grid-template-columns: 1fr 1fr; }
+    .yellow-button { grid-column: 1 / -1; width: 100%; }
+  }
+  .footer-main { gap: 38px; }
+  .footer-brand { width: 300px; }
+}
+
+@media (max-width: 800px) {
+  .newsletter {
+    display: block;
+    padding: 30px 20px;
+    form { margin-top: 22px; }
+    form > div { flex-wrap: wrap; }
+    input:not([type="checkbox"]) { width: calc(50% - 3px); }
+    .yellow-button { width: 100%; }
+  }
+  .footer-main { display: block; padding-block: 30px; }
+  .footer-brand {
+    width: 100%;
+    padding-bottom: 25px;
+    border-right: 0;
+    border-bottom: 1px solid #ddd;
+  }
+  .footer-links {
+    gap: 20px;
+    padding-top: 25px;
+    div { gap: 9px; }
+  }
+}
+
+@media (max-width: 520px) {
+  .newsletter input:not([type="checkbox"]) { width: 100%; }
+  .footer-links { display: grid; grid-template-columns: 1fr 1fr; }
+}

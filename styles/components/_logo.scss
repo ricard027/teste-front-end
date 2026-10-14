@@ -1,0 +1,22 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-ink);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -1.3px;
+  white-space: nowrap;
+
+  span {
+    display: grid;
+    width: 35px;
+    height: 35px;
+    place-items: center;
+    margin-right: -2px;
+    border-radius: 50%;
+    color: #fff;
+    background: var(--color-highlight);
+    font-size: 18px;
+    letter-spacing: -2px;
+  }
+}

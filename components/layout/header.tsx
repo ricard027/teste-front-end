@@ -1,3 +1,5 @@
+"use client";
+
 import {
   CreditCard,
   Heart,
@@ -9,9 +11,30 @@ import {
   Truck,
   UserRound,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 import { Logo } from "@/components/ui/logo";
 
 export function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const closeOnDesktop = () => {
+      if (window.innerWidth > 800) setIsMenuOpen(false);
+    };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMenuOpen(false);
+    };
+
+    window.addEventListener("resize", closeOnDesktop);
+    document.addEventListener("keydown", closeOnEscape);
+    return () => {
+      window.removeEventListener("resize", closeOnDesktop);
+      document.removeEventListener("keydown", closeOnEscape);
+    };
+  }, []);
+
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
     <header className="site-header">
       <div className="topbar" aria-label="Benefícios da loja">
@@ -26,7 +49,14 @@ export function Header() {
         </span>
       </div>
       <div className="header-main container">
-        <button className="mobile-menu" type="button" aria-label="Abrir menu">
+        <button
+          className="mobile-menu"
+          type="button"
+          aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+          aria-expanded={isMenuOpen}
+          aria-controls="main-navigation"
+          onClick={() => setIsMenuOpen((current) => !current)}
+        >
           <Menu />
         </button>
         <Logo />
@@ -58,17 +88,21 @@ export function Header() {
           </button>
         </div>
       </div>
-      <nav className="main-nav" aria-label="Navegação principal">
+      <nav
+        id="main-navigation"
+        className={`main-nav${isMenuOpen ? " is-open" : ""}`}
+        aria-label="Navegação principal"
+      >
         <div className="container nav-links">
-          <a href="#categorias">TODAS CATEGORIAS</a>
-          <a href="#produtos">SUPERMERCADO</a>
-          <a href="#produtos">LIVROS</a>
-          <a href="#produtos">MODA</a>
-          <a href="#parceiros">LANÇAMENTOS</a>
-          <a className="active" href="#produtos">
+          <a href="#categorias" onClick={closeMenu}>TODAS CATEGORIAS</a>
+          <a href="#produtos" onClick={closeMenu}>SUPERMERCADO</a>
+          <a href="#produtos" onClick={closeMenu}>LIVROS</a>
+          <a href="#produtos" onClick={closeMenu}>MODA</a>
+          <a href="#parceiros" onClick={closeMenu}>LANÇAMENTOS</a>
+          <a className="active" href="#produtos" onClick={closeMenu}>
             OFERTAS DO DIA
           </a>
-          <a href="#newsletter">ASSINATURA</a>
+          <a href="#newsletter" onClick={closeMenu}>ASSINATURA</a>
         </div>
       </nav>
     </header>

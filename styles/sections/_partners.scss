@@ -1,0 +1,29 @@
+.partners {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding-block: 78px 79px;
+}
+
+.partner-card {
+  min-height: 298px;
+  padding: 98px 38px 25px;
+  border-radius: 15px;
+  color: #fff;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.08)),
+    url("/assets/partner.jpg") center / cover;
+
+  h2 { margin: 0 0 15px; font-size: 31px; }
+  p { margin: 0 0 27px; line-height: 1.5; }
+  .yellow-button { min-width: 122px; }
+}
+
+@media (max-width: 800px) {
+  .partners { grid-template-columns: 1fr; padding-block: 48px; }
+  .partner-card.second { display: none; }
+}
+
+@media (max-width: 520px) {
+  .partner-card { min-height: 260px; padding: 75px 24px 24px; }
+}
