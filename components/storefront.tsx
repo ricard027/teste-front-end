@@ -68,7 +68,7 @@ function Partners() {
       aria-label="Parceiros"
     >
       {[1, 2].map((item) => (
-        <article className="partner-card" key={item}>
+        <article className={`partner-card ${item === 2 ? "second" : ""}`} key={item}>
           <h2>Parceiros</h2>
           <p>
             Conheça nossas ofertas

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Econverse' }],
   openGraph: { title: 'Econverse | Ofertas e produtos para você', description: 'Confira nossas ofertas e produtos em destaque.', type: 'website', locale: 'pt_BR' },
   twitter: { card: 'summary', title: 'Econverse | Ofertas e produtos para você' },
-  icons: { icon: '/icon.svg', apple: '/apple-icon.png' },
+  icons: { icon: '/icon.svg' },
 }
 
 export const viewport: Viewport = { width: 'device-width', initialScale: 1, colorScheme: 'light', themeColor: '#ffffff' }
