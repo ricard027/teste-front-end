@@ -37,7 +37,7 @@ export function Header() {
 
   return (
     <header className="site-header">
-      <div className="topbar" aria-label="Benefícios da loja">
+      <aside className="topbar" aria-label="Benefícios da loja">
         <span>
           <ShieldCheck aria-hidden="true" /> Compra <b>100% segura</b>
         </span>
@@ -47,7 +47,7 @@ export function Header() {
         <span>
           <CreditCard aria-hidden="true" /> Parcele <b>suas compras</b>
         </span>
-      </div>
+      </aside>
       <div className="header-main container">
         <button
           className="mobile-menu"
@@ -93,17 +93,15 @@ export function Header() {
         className={`main-nav${isMenuOpen ? " is-open" : ""}`}
         aria-label="Navegação principal"
       >
-        <div className="container nav-links">
-          <a href="#categorias" onClick={closeMenu}>TODAS CATEGORIAS</a>
-          <a href="#produtos" onClick={closeMenu}>SUPERMERCADO</a>
-          <a href="#produtos" onClick={closeMenu}>LIVROS</a>
-          <a href="#produtos" onClick={closeMenu}>MODA</a>
-          <a href="#parceiros" onClick={closeMenu}>LANÇAMENTOS</a>
-          <a className="active" href="#produtos" onClick={closeMenu}>
-            OFERTAS DO DIA
-          </a>
-          <a href="#newsletter" onClick={closeMenu}>ASSINATURA</a>
-        </div>
+        <ul className="container nav-links">
+          <li><a href="#categorias" onClick={closeMenu}>TODAS CATEGORIAS</a></li>
+          <li><a href="#produtos" onClick={closeMenu}>SUPERMERCADO</a></li>
+          <li><a href="#produtos" onClick={closeMenu}>LIVROS</a></li>
+          <li><a href="#produtos" onClick={closeMenu}>MODA</a></li>
+          <li><a href="#parceiros" onClick={closeMenu}>LANÇAMENTOS</a></li>
+          <li><a className="active" href="#produtos" onClick={closeMenu}>OFERTAS DO DIA</a></li>
+          <li><a href="#newsletter" onClick={closeMenu}>ASSINATURA</a></li>
+        </ul>
       </nav>
     </header>
   );

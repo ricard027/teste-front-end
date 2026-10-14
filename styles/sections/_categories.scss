@@ -4,6 +4,9 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 30px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 .category {

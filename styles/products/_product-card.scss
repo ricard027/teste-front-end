@@ -27,13 +27,13 @@
     line-height: 1.45;
   }
 
-  strong { margin: 0 0 18px; color: #444; font-size: 18px; }
+  .product-price { margin: 0 0 18px; color: #444; font-size: 18px; font-weight: 700; }
   button {
     height: 38px;
     border: 0;
     border-radius: 3px;
     color: #fff;
-    background: var(--color-accent);
+    background: var(--color-accent-contrast);
     font-size: 12px;
     font-weight: 800;
   }

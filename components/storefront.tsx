@@ -43,20 +43,21 @@ function CategoryStrip() {
       className="container category-section"
       aria-label="Categorias"
     >
-      <div className="category-grid">
+      <ul className="category-grid">
         {categories.map(([label, image], index) => (
-          <a
-            href="#produtos"
-            className={`category ${index === 0 ? "selected" : ""}`}
-            key={label}
-          >
-            <div className="category-icon">
-              <img src={image} alt="" width="52" height="52" />
-            </div>
-            <span>{label}</span>
-          </a>
+          <li key={label}>
+            <a
+              href="#produtos"
+              className={`category ${index === 0 ? "selected" : ""}`}
+            >
+              <span className="category-icon">
+                <img src={image} alt="" width="52" height="52" loading="lazy" />
+              </span>
+              <span>{label}</span>
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }
@@ -68,7 +69,10 @@ function Partners() {
       aria-label="Parceiros"
     >
       {[1, 2].map((item) => (
-        <article className={`partner-card ${item === 2 ? "second" : ""}`} key={item}>
+        <article
+          className={`partner-card ${item === 2 ? "second" : ""}`}
+          key={item}
+        >
           <h2>Parceiros</h2>
           <p>
             Conheça nossas ofertas
@@ -86,26 +90,27 @@ function Brands() {
   return (
     <section className="brands" aria-labelledby="brands-title">
       <h2 id="brands-title">Navegue por marcas</h2>
-      <div className="brand-row">
+      <ul className="brand-row" aria-hidden="true">
         {[1, 2, 3, 4, 5].map((brand) => (
-          <a
-            className="brand-circle"
-            href="#produtos"
-            key={brand}
-            aria-label={`Ver produtos da marca Econverse ${brand}`}
-          >
-            <span className="brand-mark">
-              <span>ec</span>onverse
-            </span>
-          </a>
+          <li className="brand-circle" key={brand}>
+            <span className="brand-mark"><span>ec</span>onverse</span>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }
 
-export default function Storefront() {
-  const { products, isLoading, error, retry } = useProducts();
+type StorefrontProps = {
+  initialProducts: Product[];
+  initialError: string | null;
+};
+
+export default function Storefront({ initialProducts, initialError }: StorefrontProps) {
+  const { products, isLoading, error, retry } = useProducts(
+    initialProducts,
+    initialError,
+  );
   const [selection, setSelection] = useState<{
     product: Product;
     trigger: HTMLButtonElement;

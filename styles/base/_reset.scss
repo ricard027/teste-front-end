@@ -16,6 +16,12 @@ button, a { -webkit-tap-highlight-color: transparent; }
 a { color: inherit; text-decoration: none; }
 button { cursor: pointer; }
 
+.page-loading {
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+}
+
 .container {
   width: min(var(--content-width), calc(100% - 48px));
   margin-inline: auto;

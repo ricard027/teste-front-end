@@ -45,32 +45,26 @@ export function Footer() {
         <div className="footer-brand">
           <Logo />
           <p>As melhores ofertas para você e sua família.</p>
-          <div aria-label="Redes sociais">
-            <Heart />
-            <UserRound />
-            <ShieldCheck />
+          <div aria-hidden="true">
+            <Heart aria-hidden="true" />
+            <UserRound aria-hidden="true" />
+            <ShieldCheck aria-hidden="true" />
           </div>
         </div>
-        <nav className="footer-links" aria-label="Links do rodapé">
-          <div>
-            <b>Institucional</b>
-            <a href="#inicio">Sobre Nós</a>
-            <a href="#inicio">Movimento</a>
-            <a href="#inicio">Trabalhe conosco</a>
-          </div>
-          <div>
-            <b>Ajuda</b>
-            <a href="#inicio">Suporte</a>
-            <a href="#inicio">Fale Conosco</a>
-            <a href="#inicio">Perguntas Frequentes</a>
-          </div>
-          <div>
-            <b>Termos</b>
-            <a href="#inicio">Termos e Condições</a>
-            <a href="#inicio">Política de Privacidade</a>
-            <a href="#inicio">Troca e Devolução</a>
-          </div>
-        </nav>
+        <div className="footer-links">
+          <section>
+            <h2>Institucional</h2>
+            <ul><li>Sobre Nós</li><li>Movimento</li><li>Trabalhe conosco</li></ul>
+          </section>
+          <section>
+            <h2>Ajuda</h2>
+            <ul><li>Suporte</li><li>Fale Conosco</li><li>Perguntas Frequentes</li></ul>
+          </section>
+          <section>
+            <h2>Termos</h2>
+            <ul><li>Termos e Condições</li><li>Política de Privacidade</li><li>Troca e Devolução</li></ul>
+          </section>
+        </div>
       </div>
       <div className="copyright">Econverse. Todos os direitos reservados.</div>
     </footer>

@@ -18,17 +18,21 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   margin: 0 0 20px;
+  padding: 0;
   border: 1px solid #d6d6d6;
+  list-style: none;
 
-  button {
+  li {
+    display: grid;
     height: 33px;
+    place-items: center;
     border: 0;
     border-right: 1px solid #d6d6d6;
     color: #555;
     background: #fff;
     font-size: 12px;
     &:last-child { border: 0; }
-    &.active { color: var(--color-accent); font-weight: 800; }
+    &.active { color: var(--color-accent-contrast); font-weight: 800; }
   }
 }
 
@@ -85,7 +89,7 @@
     border: 0;
     border-radius: 4px;
     color: #fff;
-    background: var(--color-accent);
+    background: var(--color-accent-contrast);
     font-weight: 700;
   }
 }

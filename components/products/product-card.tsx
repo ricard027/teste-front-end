@@ -7,8 +7,8 @@ export function ProductCard({ product, onSelect }: { product: Product; onSelect:
       <img src={product.photo} alt={product.productName} width="247" height="250" loading="lazy" />
       <div className="product-info">
         <h3>{product.productName}</h3>
-        <strong>{formatCurrency(product.price)}</strong>
-        <button type="button" onClick={(event) => onSelect(product, event.currentTarget)} aria-label={`Ver detalhes de ${product.productName}`}>COMPRAR</button>
+        <p className="product-price">{formatCurrency(product.price)}</p>
+        <button type="button" onClick={(event) => onSelect(product, event.currentTarget)} aria-label={`Comprar — ver detalhes de ${product.productName}`}>COMPRAR</button>
       </div>
     </article>
   )

@@ -27,7 +27,7 @@
 .footer-brand {
   width: 375px;
   border-right: 1px solid #ddd;
-  p { color: #777; font-size: 13px; line-height: 1.35; }
+  p { color: #707070; font-size: 13px; line-height: 1.35; }
   div { display: flex; gap: 25px; margin-top: 24px; color: #666; }
   svg { width: 18px; }
 }
@@ -36,14 +36,15 @@
   display: flex;
   flex: 1;
   justify-content: space-between;
-  div { display: flex; flex-direction: column; gap: 13px; color: #777; font-size: 12px; }
-  b { color: #555; font-size: 14px; }
+  section { color: #707070; font-size: 12px; }
+  h2 { margin: 0 0 13px; color: #555; font-size: 14px; }
+  ul { display: flex; flex-direction: column; gap: 13px; padding: 0; margin: 0; list-style: none; }
 }
 
 .copyright {
   padding: 14px;
   border-top: 1px solid #eee;
-  color: #888;
+  color: #666;
   font-size: 11px;
   text-align: center;
 }
@@ -78,7 +79,7 @@
   .footer-links {
     gap: 20px;
     padding-top: 25px;
-    div { gap: 9px; }
+    ul { gap: 9px; }
   }
 }
 

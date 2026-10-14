@@ -83,9 +83,9 @@ export function ProductShelf({ sectionId, products, isLoading, error, onRetry, o
   return (
     <section id={sectionId} className="container products-section" aria-labelledby={`${sectionId}-title`} aria-busy={isLoading}>
       <div className="section-heading"><span /><h2 id={`${sectionId}-title`}>Produtos relacionados</h2><span /></div>
-      <div className="tabs" aria-label="Categorias de produtos">
-        {['CELULAR', 'ACESSÓRIOS', 'TABLETS', 'NOTEBOOKS', 'TVS', 'VER TODOS'].map((tab, index) => <button type="button" className={index === 0 ? 'active' : ''} key={tab}>{tab}</button>)}
-      </div>
+      <ul className="tabs" aria-label="Categorias apresentadas no layout">
+        {['CELULAR', 'ACESSÓRIOS', 'TABLETS', 'NOTEBOOKS', 'TVS', 'VER TODOS'].map((tab, index) => <li className={index === 0 ? 'active' : ''} key={tab}>{tab}</li>)}
+      </ul>
       {isLoading && <div className="product-status" role="status">Carregando produtos…</div>}
       {!isLoading && error && <div className="product-status" role="alert"><p>{error}</p><button type="button" onClick={onRetry}>Tentar novamente</button></div>}
       {!isLoading && !error && products.length === 0 && <div className="product-status">Nenhum produto disponível no momento.</div>}
@@ -94,7 +94,7 @@ export function ProductShelf({ sectionId, products, isLoading, error, onRetry, o
           <button className="carousel-control carousel-control--previous" type="button" onClick={() => navigate(-1)} disabled={!navigation.canGoBack} aria-label="Ver produtos anteriores" aria-controls={`${sectionId}-slider`}>
             <ChevronLeft aria-hidden="true" />
           </button>
-          <div ref={sliderRef} id={`${sectionId}-slider`} className="products-grid" tabIndex={0} onKeyDown={handleSliderKeyDown} aria-label="Lista de produtos. Use as setas esquerda e direita para navegar.">
+          <div ref={sliderRef} id={`${sectionId}-slider`} className="products-grid" role="group" tabIndex={0} onKeyDown={handleSliderKeyDown} aria-label="Lista de produtos. Use as setas esquerda e direita para navegar.">
             {products.map((product, index) => <ProductCard key={`${product.productName}-${index}`} product={product} onSelect={onSelect} />)}
           </div>
           <button className="carousel-control carousel-control--next" type="button" onClick={() => navigate(1)} disabled={!navigation.canGoForward} aria-label="Ver próximos produtos" aria-controls={`${sectionId}-slider`}>

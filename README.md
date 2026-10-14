@@ -24,6 +24,11 @@ pnpm dev
 
 Acesse `http://localhost:3000`.
 
+`PRODUCTS_ENDPOINT` é obrigatório. `SITE_URL` é opcional e deve receber somente
+o domínio HTTPS definitivo de produção, sem caminhos adicionais. Quando essa
+variável não está configurada, previews e ambientes locais recebem `noindex` e
+não anunciam canonical ou URLs fictícias.
+
 ## Verificações
 
 ```bash
@@ -35,7 +40,9 @@ pnpm start
 
 ## Estrutura
 
-- `app/`: rota e metadados da aplicação
+- `app/`: páginas, rota da API, metadados, robots e sitemap
+- `components/seo/`: dados estruturados JSON-LD
+- `config/`: conteúdo compartilhado de SEO e configuração do domínio público
 - `components/layout/`: cabeçalho e rodapé
 - `components/products/`: vitrine, card e modal de produto
 - `components/ui/`: elementos compartilhados
@@ -46,7 +53,7 @@ pnpm start
 
 ## Dados e funcionalidades
 
-Uma única consulta ao JSON configurado em `PRODUCTS_ENDPOINT` abastece as duas vitrines. A variável é lida exclusivamente pela rota executada no servidor e não utiliza o prefixo público `NEXT_PUBLIC_`. Como o servidor oficial não fornece cabeçalho CORS, essa rota interna do Next encaminha a requisição e valida a resposta; nenhum catálogo local ou fallback fictício é usado. A interface contempla carregamento, erro com nova tentativa e lista vazia. Os valores são formatados em BRL sem alterar os números recebidos.
+Uma única consulta no servidor ao JSON configurado em `PRODUCTS_ENDPOINT` abastece as duas vitrines e inclui os produtos no HTML inicial. A variável é lida exclusivamente no servidor e não utiliza o prefixo público `NEXT_PUBLIC_`. A rota interna do Next reutiliza o mesmo serviço para novas tentativas no cliente; nenhum catálogo local ou fallback fictício é usado. A interface contempla carregamento, erro com nova tentativa e lista vazia. Os valores são formatados em BRL sem alterar os números recebidos.
 
 Ao selecionar um card, o modal apresenta somente nome, descrição, imagem e preço reais do item. Ele fecha pelo botão, pela tecla Escape e pelo fundo, mantém o foco contido, bloqueia o conteúdo de fundo e devolve o foco ao acionador.
 
@@ -54,5 +61,9 @@ Ao selecionar um card, o modal apresenta somente nome, descrição, imagem e pre
 
 - Informações que não existem no JSON (preço anterior, parcelas, avaliações e estoque) não são inventadas.
 - Os rótulos de categorias e blocos institucionais são elementos estáticos do layout; eles não filtram os produtos porque a API não fornece categorias.
-- Os produtos são carregados no cliente, portanto não integram o HTML inicial para indexação. Uma aplicação de e-commerce real poderia consultar a API no servidor, mas o estado de carregamento pedido pelo teste foi priorizado.
+- Os metadados, Open Graph e Twitter Card compartilham uma configuração central. Canonical, `og:url`, sitemap e o schema `WebSite` só são publicados quando `SITE_URL` possui um domínio HTTPS definitivo.
+- O JSON-LD descreve a vitrine como `ItemList` e utiliza `Product` apenas com nome, descrição, imagem e preço reais do JSON oficial. Não são declarados marca, SKU, avaliações, estoque, disponibilidade ou URLs de páginas de produto inexistentes.
+- A vitrine não é uma página individual de produto; portanto, o JSON-LD não implica elegibilidade para rich results de produto.
+- Não existe atualmente uma imagem social própria em 1200 × 630. `og:image` e `twitter:image` permanecem intencionalmente ausentes até haver um asset público adequado.
+- Não é utilizado schema `Organization`, pois este projeto é uma implementação de teste e não há confirmação de que represente o site oficial da Econverse.
 - A miniatura pública do Figma e a imagem oficial da vitrine foram usadas como referência. Detalhes internos do arquivo que dependem de permissão de edição não puderam ser inspecionados.

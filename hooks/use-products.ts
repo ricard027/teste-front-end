@@ -4,10 +4,10 @@ import { useCallback, useEffect, useState } from 'react'
 import { fetchProducts } from '@/services/products'
 import type { Product } from '@/types/product'
 
-export function useProducts() {
-  const [products, setProducts] = useState<Product[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+export function useProducts(initialProducts: Product[], initialError: string | null) {
+  const [products, setProducts] = useState<Product[]>(initialProducts)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(initialError)
   const [request, setRequest] = useState(0)
 
   const retry = useCallback(() => {
@@ -17,6 +17,8 @@ export function useProducts() {
   }, [])
 
   useEffect(() => {
+    if (request === 0) return
+
     const controller = new AbortController()
     fetchProducts(controller.signal)
       .then(setProducts)

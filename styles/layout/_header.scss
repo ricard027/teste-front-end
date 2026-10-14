@@ -86,6 +86,8 @@
   color: #999;
   font-size: 10px;
   font-weight: 700;
+  list-style: none;
+  padding: 0;
 
   a.active { color: var(--color-primary); }
 }
@@ -127,8 +129,13 @@
     align-items: stretch;
     padding: 8px 14px 12px;
 
+    li,
     a {
       display: flex;
+      width: 100%;
+    }
+
+    a {
       min-height: 42px;
       align-items: center;
       padding: 0 12px;
