@@ -53,13 +53,13 @@ pnpm start
 
 ## Dados e funcionalidades
 
-Uma única consulta no servidor ao JSON configurado em `PRODUCTS_ENDPOINT` abastece as duas vitrines e inclui os produtos no HTML inicial. A variável é lida exclusivamente no servidor e não utiliza o prefixo público `NEXT_PUBLIC_`. A rota interna do Next reutiliza o mesmo serviço para novas tentativas no cliente; nenhum catálogo local ou fallback fictício é usado. A interface contempla carregamento, erro com nova tentativa e lista vazia. Os valores são formatados em BRL sem alterar os números recebidos.
+Uma única consulta no servidor ao JSON configurado em `PRODUCTS_ENDPOINT` abastece as três vitrines e inclui os produtos no HTML inicial. A variável é lida exclusivamente no servidor e não utiliza o prefixo público `NEXT_PUBLIC_`. A rota interna do Next reutiliza o mesmo serviço para novas tentativas no cliente; nenhum catálogo local ou fallback fictício é usado. A interface contempla carregamento, erro com nova tentativa e lista vazia. O preço principal é formatado em BRL sem alterar o valor recebido.
 
 Ao selecionar um card, o modal apresenta somente nome, descrição, imagem e preço reais do item. Ele fecha pelo botão, pela tecla Escape e pelo fundo, mantém o foco contido, bloqueia o conteúdo de fundo e devolve o foco ao acionador.
 
 ## Decisões e limitações
 
-- Informações que não existem no JSON (preço anterior, parcelas, avaliações e estoque) não são inventadas.
+- Preço anterior e parcelamento são projeções exclusivamente visuais para reproduzir o layout; avaliações, estoque e disponibilidade não são declarados sem dados da API.
 - Os rótulos de categorias e blocos institucionais são elementos estáticos do layout; eles não filtram os produtos porque a API não fornece categorias.
 - Os metadados, Open Graph e Twitter Card compartilham uma configuração central. Canonical, `og:url`, sitemap e o schema `WebSite` só são publicados quando `SITE_URL` possui um domínio HTTPS definitivo.
 - O JSON-LD descreve a vitrine como `ItemList` e utiliza `Product` apenas com nome, descrição, imagem e preço reais do JSON oficial. Não são declarados marca, SKU, avaliações, estoque, disponibilidade ou URLs de páginas de produto inexistentes.
