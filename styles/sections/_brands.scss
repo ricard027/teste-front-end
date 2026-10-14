@@ -1,7 +1,7 @@
 .brands {
-  padding: 6px 0 60px;
+  padding: 4px 0 102px;
   h2 {
-    margin: 0 0 32px;
+    margin: 0 0 45px;
     color: var(--color-primary);
     font-size: 26px;
     text-align: center;
@@ -11,7 +11,7 @@
 .brand-row {
   display: flex;
   justify-content: center;
-  gap: 38px;
+  gap: 45px;
   padding-left: 0;
   margin-block: 0;
   list-style: none;
@@ -19,9 +19,9 @@
 
 .brand-circle {
   display: grid;
-  width: 180px;
-  height: 180px;
-  flex: 0 0 180px;
+  width: 190px;
+  height: 190px;
+  flex: 0 0 190px;
   place-items: center;
   overflow: hidden;
   border-radius: 50%;
@@ -63,8 +63,17 @@
     gap: 12px;
     padding: 0 20px 15px;
     overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-padding-inline: 20px;
+    scroll-snap-type: x proximity;
     scrollbar-width: none;
+    touch-action: pan-x pan-y;
+    -webkit-overflow-scrolling: touch;
     &::-webkit-scrollbar { display: none; }
   }
-  .brand-circle { height: 125px; flex: 0 0 125px; }
+  .brand-circle {
+    height: 125px;
+    flex: 0 0 125px;
+    scroll-snap-align: start;
+  }
 }

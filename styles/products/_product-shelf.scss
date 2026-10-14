@@ -1,23 +1,35 @@
-.products-section + .products-section { margin-top: 8px; }
+.products-section { padding-block: 0 2px; }
+
+.products-section:last-child { padding-bottom: 96px; }
 
 .section-heading {
   display: flex;
   align-items: center;
   gap: 26px;
-  margin: 0 0 5px;
+  margin: 0 0 10px;
   span { height: 1px; flex: 1; background: var(--color-line); }
+  > div {
+    flex: 0 0 auto;
+    text-align: center;
+  }
   h2 {
     margin: 0;
-    color: var(--color-accent);
+    color: var(--color-primary);
     font-size: 26px;
-    text-align: center;
+  }
+  a {
+    display: block;
+    margin-top: 5px;
+    color: #333;
+    font-size: 12px;
+    font-weight: 700;
   }
 }
 
 .tabs {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  margin: 0 0 20px;
+  margin: 0 0 19px;
   padding: 0;
   border: 1px solid #d6d6d6;
   list-style: none;
@@ -42,8 +54,8 @@
   display: grid;
   grid-template-columns: none;
   grid-auto-flow: column;
-  grid-auto-columns: calc((100% - 42px) / 4);
-  gap: 14px;
+  grid-auto-columns: calc((100% - 36px) / 4);
+  gap: 12px;
   padding: 2px;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
